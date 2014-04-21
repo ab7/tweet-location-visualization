@@ -1,0 +1,35 @@
+[{
+    "elementType": "labels",
+    "stylers": [
+      { "visibility": "off" }
+    ]
+  },{
+    "featureType": "water",
+    "stylers": [
+      { "color": "#ffffff" }
+    ]
+  },{
+    "featureType": "landscape",
+    "stylers": [
+      { "weight": 8 },
+      { "saturation": -100 },
+      { "gamma": 0.34 },
+      { "visibility": "off" }
+    ]
+  },{
+    "featureType": "landscape.natural.landcover",
+    "stylers": [
+      { "visibility": "on" },
+      { "color": "#5f839d" }
+    ]
+  },{
+    "stylers": [
+      { "visibility": "simplified" }
+    ]
+  },{
+    "featureType": "landscape.natural.terrain",
+    "stylers": [
+      { "visibility": "off" }
+    ]
+  }
+]
