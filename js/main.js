@@ -66,44 +66,49 @@ function findLoc(tweet) {
   userLoc = 0;
   result = $('.result');
   result.empty();
-  $.each(tweet.statuses, function (i, item) {
-    if (item.geo) {
-      coords.push([item.geo.coordinates, [item.geo.coordinates, item.text]]);
-      locEnabled++;
-    } else if (item.user.location) {
-      // call the geonames api for location data
-      $.ajax({
-        type: 'GET',
-        url: 'http://api.geonames.org/searchJSON',
-        data: {
-          q: encodeURIComponent(item.user.location),
-          maxRows: 1,
-          fuzzy: 0.2,
-          username: 'ab77'
-        }
-      })
-        .done(function(data) {
-          var c = getCoords(data);
-          if (c) {
-            coords.push([c, [item.user.location, item.text]]);
-            userLoc++;
-          }
-          if ((i + 1) === tweet.statuses.length) {
-            $('.noData').text(noData);
-            $('.noGeo').text(userLoc);
-            $('.locEnabled').text(locEnabled);
-            makeMap(coords);
-            hideLoad();
+  if (tweet.length > 0) {
+    $.each(tweet.statuses, function (i, item) {
+      if (item.geo) {
+        coords.push([item.geo.coordinates, [item.geo.coordinates, item.text]]);
+        locEnabled++;
+      } else if (item.user.location) {
+        // call the geonames api for location data
+        $.ajax({
+          type: 'GET',
+          url: 'http://api.geonames.org/searchJSON',
+          data: {
+            q: encodeURIComponent(item.user.location),
+            maxRows: 1,
+            fuzzy: 0.2,
+            username: 'ab77'
           }
         })
-          .fail(function() {
-            hideLoad();
-            error('Looks like something went wrong, please try again');
-          });
-    } else {
-      noData++;
-    }
-  });
+          .done(function(data) {
+            var c = getCoords(data);
+            if (c) {
+              coords.push([c, [item.user.location, item.text]]);
+              userLoc++;
+            }
+            if ((i + 1) === tweet.statuses.length) {
+              $('.noData').text(noData);
+              $('.noGeo').text(userLoc);
+              $('.locEnabled').text(locEnabled);
+              makeMap(coords);
+              hideLoad();
+            }
+          })
+            .fail(function() {
+              hideLoad();
+              error('Looks like something went wrong, please try again');
+            });
+      } else {
+        noData++;
+      }
+    });
+  } else {
+    hideLoad();
+    error('No match found! Try a different keyword');
+  }
 }
 
 // hide load function before displaying results
