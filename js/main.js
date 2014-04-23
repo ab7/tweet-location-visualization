@@ -1,11 +1,13 @@
+// globals
 var openedInfoWindow = null;
+
 // make info window
 function makeInfoWin (marker, text, map) {
   var infoWin = new google.maps.InfoWindow({
     content: text
   });
   google.maps.event.addListener(marker, 'click', function() {
-    if (openedInfoWindow != null) openedInfoWindow.close();
+    if (openedInfoWindow !== null) openedInfoWindow.close();
     infoWin.open(map, marker);
     openedInfoWindow = infoWin;
     google.maps.event.addListener(infoWin, 'closeclick', function() {
@@ -35,10 +37,14 @@ function makeMap(coords) {
         position: myLatlng,
         map: map
       });
-      var tweet = coords[i][1][1].toString()
+      var tweet = coords[i][1][1].toString();
       makeInfoWin(marker, tweet, map);
     }
-  });
+  })
+    .fail(function() {
+      hideLoad();
+      error('Looks like something went wrong, please try again');
+    });
 }
 
 // get coordinates from geonames object
@@ -87,24 +93,58 @@ function findLoc(tweet) {
             $('.noGeo').text(userLoc);
             $('.locEnabled').text(locEnabled);
             makeMap(coords);
+            hideLoad();
           }
-        });
+        })
+          .fail(function() {
+            hideLoad();
+            error('Looks like something went wrong, please try again');
+          });
     } else {
       noData++;
     }
   });
 }
 
+// hide load function before displaying results
+function hideLoad() {
+  $('#circleG').fadeOut();
+  $('#map').animate({'opacity': '1'});
+}
+
+// display error message
+function error(message) {
+  $('#error').text(message);
+}
+
 // send hashtag to twitter server and retrieve json
-function getTweets(e) {
-  $.ajax('/' , {
-    type: 'GET',
-    data : {
-      fmt: 'json',
-      hashtag: $('input').val()
-    },
-    success: findLoc
-  });
+function getTweets() {
+  error(' ');
+  var keyword = $('input').val();
+  if (keyword) {
+    if (keyword.trim() === "") {
+      error('Please enter a keyword or hashtag');
+      return;
+    }
+    $('#map').animate({'opacity': '.2'});
+    $('#circleG').fadeIn();
+    $.ajax({
+      url: '/',
+      type: 'GET',
+      data : {
+        fmt: 'json',
+        hashtag: encodeURIComponent($('input').val())
+      },
+      success: findLoc,
+      timeout: 5000
+    })
+      .fail(function() {
+        hideLoad();
+        error('Looks like something went wrong, please try again');
+      });
+  } else {
+    error('Please enter a keyword or hashtag');
+  }
 }
 
 // doc ready
