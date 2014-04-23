@@ -2,7 +2,7 @@
 
 <html lang="en">
   <head>
-    <title>hashtag-map</title>
+    <title>Tweet Location Visualization</title>
     <meta charset="utf-8">
     <link rel="stylesheet" href="static/main.css">
     <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Roboto+Slab%7CLobster">
@@ -17,15 +17,24 @@
       </p>
       <label>
         Enter a keyword
-        <input type="text" name="hashtag" value="#happy">
+        <input type="text" name="hashtag" value="#happy" maxlength="15">
       </label>
       <button>Get Results!</button>
-      <div id="map"></div>
-      <h3>Important Notes!</h3>
+      <div id="error"></div>
+      <div class="mapWrapper">
+        <div id="map">
+        </div>
+        <div id="circleG">
+          <div id="circleG_1" class="circleG"></div>
+          <div id="circleG_2" class="circleG"></div>
+          <div id="circleG_3" class="circleG"></div>
+        </div>
+      </div>
+      <h3>Out of the 100 Tweets</h3>
       <ul>
         <li><span class="numBox noData"></span> of the tweets have no location data</li>
         <li><span class="numBox noGeo"></span> are based on what the user put for location</li>
-        <li>Only <span class="numBox locEnabled"></span></span> tweets are location enabled</li>
+        <li>Only <span class="numBox locEnabled"></span></span> tweets were location enabled</li>
         <li>Basically, this information is pretty inaccurate...</li>
         <li>But it does give some interesting insight, enjoy!</li>
       </ul>
@@ -34,6 +43,12 @@
         <li>Twitter API</li>
         <li>Google Maps API</li>
         <li>Geonames API</li>
+      </ul>
+      <h3>Contact</h3>
+      <ul>
+        <li>Stitched together by: Alex Baker </li>
+        <li>Twitter: <a href="//twitter.com/alexbakertech">@alexbakertech</a></li>
+        <li>Site: <a href="//alexbakertech.com">alexbakertech.com</a></li>
       </ul>
     </section>
     <script src="/js/main.js"></script>
