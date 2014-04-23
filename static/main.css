@@ -1,4 +1,4 @@
-/* ==========================================================================
+ ==========================================================================
    Normalize
    ========================================================================== */
 
@@ -271,7 +271,7 @@ p {
 input {
   border: 1px solid grey;
   border-radius: 10px;
-  margin-bottom: 15px;
+  padding-left: 6px;
   outline: none;
 }
 
@@ -303,13 +303,20 @@ button:active {
   box-shadow: none;
 }
 
+a {
+  text-decoration: none;
+}
+
 
 /* ==========================================================================
    Custom Styles
    ========================================================================== */
 
+.mapWrapper {
+  position: relative;
+}
+
 #map {
-  border: 1px solid black;
   height: 310px;
   margin: auto;
   width: 510px;
@@ -325,6 +332,141 @@ button:active {
   display: inline-block;
   height: 1.3em;
   width: 1.3em;
+}
+
+#error {
+  color: red;
+  height: 1.2em;
+  margin-bottom: 5px;
+  text-align: center;
+}
+
+
+/*** load animation ***/
+#circleG{
+  display: none;
+  position: absolute;
+  top: 140px;
+  left: 172px;
+  width:149.33333333333334px;
+  z-index: 70;
+}
+
+.circleG{
+background-color:#E3E3E3;
+float:left;
+height:32px;
+margin-left:17px;
+width:32px;
+-moz-animation-name:bounce_circleG;
+-moz-animation-duration:1.9500000000000002s;
+-moz-animation-iteration-count:infinite;
+-moz-animation-direction:linear;
+-moz-border-radius:21px;
+-webkit-animation-name:bounce_circleG;
+-webkit-animation-duration:1.9500000000000002s;
+-webkit-animation-iteration-count:infinite;
+-webkit-animation-direction:linear;
+-webkit-border-radius:21px;
+-ms-animation-name:bounce_circleG;
+-ms-animation-duration:1.9500000000000002s;
+-ms-animation-iteration-count:infinite;
+-ms-animation-direction:linear;
+-ms-border-radius:21px;
+-o-animation-name:bounce_circleG;
+-o-animation-duration:1.9500000000000002s;
+-o-animation-iteration-count:infinite;
+-o-animation-direction:linear;
+-o-border-radius:21px;
+animation-name:bounce_circleG;
+animation-duration:1.9500000000000002s;
+animation-iteration-count:infinite;
+animation-direction:linear;
+border-radius:21px;
+}
+
+#circleG_1{
+-moz-animation-delay:0.39s;
+-webkit-animation-delay:0.39s;
+-ms-animation-delay:0.39s;
+-o-animation-delay:0.39s;
+animation-delay:0.39s;
+}
+
+#circleG_2{
+-moz-animation-delay:0.9099999999999999s;
+-webkit-animation-delay:0.9099999999999999s;
+-ms-animation-delay:0.9099999999999999s;
+-o-animation-delay:0.9099999999999999s;
+animation-delay:0.9099999999999999s;
+}
+
+#circleG_3{
+-moz-animation-delay:1.1700000000000002s;
+-webkit-animation-delay:1.1700000000000002s;
+-ms-animation-delay:1.1700000000000002s;
+-o-animation-delay:1.1700000000000002s;
+animation-delay:1.1700000000000002s;
+}
+
+@-moz-keyframes bounce_circleG{
+0%{
+}
+
+50%{
+background-color:#FF6161}
+
+100%{
+}
+
+}
+
+@-webkit-keyframes bounce_circleG{
+0%{
+}
+
+50%{
+background-color:#FF6161}
+
+100%{
+}
+
+}
+
+@-ms-keyframes bounce_circleG{
+0%{
+}
+
+50%{
+background-color:#FF6161}
+
+100%{
+}
+
+}
+
+@-o-keyframes bounce_circleG{
+0%{
+}
+
+50%{
+background-color:#FF6161}
+
+100%{
+}
+
+}
+
+@keyframes bounce_circleG{
+0%{
+}
+
+50%{
+background-color:#FF6161}
+
+100%{
+}
+
 }
 
 
@@ -362,4 +504,4 @@ button:active {
 
 /** {
   outline: 1px solid red;
-}*/
+}
