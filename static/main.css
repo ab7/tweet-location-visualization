@@ -239,9 +239,68 @@ html {
 }
 
 body {
+  background-color: #e0d4d4;
+  font-family: 'Roboto Slab';
   height: 100%; 
   margin: 0; 
   padding: 0;
+  min-width: 600px;
+}
+
+section {
+  margin: 0 auto;
+  width: 510px;
+}
+
+h1 {
+  color: #ff6464;
+  font: 2.7em/50% 'Lobster';
+  text-shadow: 2px 2px #8e0e0e;
+}
+
+h3 {
+  color: #ff6464;
+  font: 2em/0 'Lobster';
+}
+
+p {
+  margin: 15px auto;
+  width: 510px;
+}
+
+input {
+  border: 1px solid grey;
+  border-radius: 10px;
+  margin-bottom: 15px;
+  outline: none;
+}
+
+input:hover {
+  border: 1px solid #a2a2a2;
+}
+
+input:focus {
+  border: 1px solid #ea8f8f;
+}
+
+button {
+  border: 1px solid grey;
+  border-radius: 15px;
+  outline: none;
+}
+
+button:hover {
+  border: 1px solid #989898;
+  -webkit-box-shadow: 0 2px 0 0 rgba(50, 50, 50, 0.75);
+  -moz-box-shadow: 0 2px 0 0 rgba(50, 50, 50, 0.75);
+  box-shadow: 0 2px 0 0 rgba(50, 50, 50, 0.75);
+}
+
+button:active {
+  background-color: #ea8f8f;
+  -webkit-box-shadow: none;
+  -moz-box-shadow: none;
+  box-shadow: none;
 }
 
 
@@ -250,8 +309,22 @@ body {
    ========================================================================== */
 
 #map {
-  height: 600px;
-  width: 960px;
+  border: 1px solid black;
+  height: 310px;
+  margin: auto;
+  width: 510px;
+}
+
+#templates {
+  display: none;
+}
+
+.numBox {
+  background-color: #fff;
+  border: 1px solid grey;
+  display: inline-block;
+  height: 1.3em;
+  width: 1.3em;
 }
 
 
