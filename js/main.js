@@ -66,7 +66,7 @@ function findLoc(tweet) {
   userLoc = 0;
   result = $('.result');
   result.empty();
-  if (tweet.length > 0) {
+  if (tweet.statuses.length > 0) {
     $.each(tweet.statuses, function (i, item) {
       if (item.geo) {
         coords.push([item.geo.coordinates, [item.geo.coordinates, item.text]]);
