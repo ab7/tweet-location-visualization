@@ -23,11 +23,13 @@
       { "color": "#5f839d" }
     ]
   },{
+    "featureType": "landscape.natural.terrain",
     "stylers": [
-      { "visibility": "simplified" }
+      { "visibility": "off" }
     ]
   },{
-    "featureType": "landscape.natural.terrain",
+    "featureType": "administrative",
+    "elementType": "geometry.fill",
     "stylers": [
       { "visibility": "off" }
     ]
