@@ -80,7 +80,7 @@ function findLoc(tweet) {
             q: encodeURIComponent(item.user.location),
             maxRows: 1,
             fuzzy: 0.2,
-            username: 'ab77'
+            username: 'username_here'
           }
         })
           .done(function(data) {
