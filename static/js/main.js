@@ -1,16 +1,35 @@
+/*global $, google*/
+/*jslint plusplus: true */
+
 // globals
 var openedInfoWindow = null;
 
+// hide load function before displaying results
+function hideLoad() {
+  'use strict';
+  $('#circleG').fadeOut();
+  $('#map').animate({'opacity': '1'});
+}
+
+// display error message
+function error(message) {
+  'use strict';
+  $('#error').text(message);
+}
+
 // make info window
-function makeInfoWin (marker, text, map) {
+function makeInfoWin(marker, text, map) {
+  'use strict';
   var infoWin = new google.maps.InfoWindow({
     content: text
   });
-  google.maps.event.addListener(marker, 'click', function() {
-    if (openedInfoWindow !== null) openedInfoWindow.close();
+  google.maps.event.addListener(marker, 'click', function () {
+    if (openedInfoWindow !== null) {
+      openedInfoWindow.close();
+    }
     infoWin.open(map, marker);
     openedInfoWindow = infoWin;
-    google.maps.event.addListener(infoWin, 'closeclick', function() {
+    google.maps.event.addListener(infoWin, 'closeclick', function () {
       openedInfoWindow = null;
     });
   });
@@ -18,7 +37,8 @@ function makeInfoWin (marker, text, map) {
 
 // make new map object and add markers
 function makeMap(coords) {
-  var mapOptions, map, makeStyles, styledMap, myLatlng, marker;
+  'use strict';
+  var i, mapOptions, map, mapStyles, styledMap, myLatlng, marker;
   mapOptions = {
     center: new google.maps.LatLng(35, 0),
     zoom: 1
@@ -31,7 +51,7 @@ function makeMap(coords) {
     map.setMapTypeId('map_style');
 
     // add markers to map
-    for (var i = 0; i < coords.length; i++) {
+    for (i = 0; i < coords.length; i++) {
       myLatlng = new google.maps.LatLng(coords[i][0][0], coords[i][0][1]);
       marker = new google.maps.Marker({
         position: myLatlng,
@@ -41,7 +61,7 @@ function makeMap(coords) {
       makeInfoWin(marker, tweet, map);
     }
   })
-    .fail(function() {
+    .fail(function () {
       hideLoad();
       error('Looks like something went wrong, please try again');
     });
@@ -49,6 +69,7 @@ function makeMap(coords) {
 
 // get coordinates from geonames object
 function getCoords(geoname) {
+  'use strict';
   var lng, lat;
   if (geoname.totalResultsCount) {
     lng = geoname.geonames[0].lng;
@@ -59,7 +80,8 @@ function getCoords(geoname) {
 
 // find location of tweets
 function findLoc(tweet) {
-  var results, loc, coords, lng, lat, locEnabled, noData, userLoc;
+  'use strict';
+  var results, loc, coords, lng, lat, locEnabled, noData, userLoc, result;
   coords = [];
   locEnabled = 0;
   noData = 0;
@@ -83,7 +105,7 @@ function findLoc(tweet) {
             username: 'ab77'
           }
         })
-          .done(function(data) {
+          .done(function (data) {
             var c = getCoords(data);
             if (c) {
               coords.push([c, [item.user.location, item.text]]);
@@ -97,10 +119,10 @@ function findLoc(tweet) {
               hideLoad();
             }
           })
-            .fail(function() {
-              hideLoad();
-              error('Looks like something went wrong, please try again');
-            });
+          .fail(function () {
+            hideLoad();
+            error('Looks like something went wrong, please try again');
+          });
       } else {
         noData++;
       }
@@ -111,19 +133,9 @@ function findLoc(tweet) {
   }
 }
 
-// hide load function before displaying results
-function hideLoad() {
-  $('#circleG').fadeOut();
-  $('#map').animate({'opacity': '1'});
-}
-
-// display error message
-function error(message) {
-  $('#error').text(message);
-}
-
 // send hashtag to twitter server and retrieve json
 function getTweets() {
+  'use strict';
   error(' ');
   var keyword = $('input').val();
   if (keyword) {
@@ -143,7 +155,7 @@ function getTweets() {
       success: findLoc,
       timeout: 5000
     })
-      .fail(function() {
+      .fail(function () {
         hideLoad();
         error('Looks like something went wrong, please try again');
       });
@@ -154,6 +166,7 @@ function getTweets() {
 
 // doc ready
 $(function () {
+  'use strict';
   makeMap(0);
   $('button').click(getTweets);
 });
