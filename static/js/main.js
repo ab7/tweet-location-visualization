@@ -168,5 +168,10 @@ function getTweets() {
 $(function () {
   'use strict';
   makeMap(0);
+  $(document).keypress(function (e) {
+    if (e.which === 13) {
+      getTweets();
+    }
+  });
   $('button').click(getTweets);
 });
