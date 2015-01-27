@@ -4,6 +4,8 @@
   <head>
     <title>Tweet Location Visualization</title>
     <meta charset="utf-8">
+    <meta name="description" content="A tweet location visualization application developed by Alex Baker.">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="static/main.css">
     <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Roboto+Slab%7CLobster">
     <script src="//code.jquery.com/jquery.min.js"></script>
@@ -11,14 +13,11 @@
   </head>
   <body>
     <section>
-      <h1>Tweet Location Visualization</h1>
+      <h1>Tweet Location <span class="floatR">Visualization</span></h1>
       <p>
         This app will allow you to search Twitter for the 100 most recent tweets for any keyword or hashtag. It utilizes the tweets location information to plot markers on the map below. Click on any of the markers to see the original tweet.
       </p>
-      <label>
-        Enter a keyword
-        <input type="text" name="hashtag" value="#happy" maxlength="15">
-      </label>
+      <input type="text" name="hashtag" maxlength="15" placeholder="Ex: #hello or hello">
       <button>Get Results!</button>
       <div id="error"></div>
       <div class="mapWrapper">
@@ -53,13 +52,13 @@
       <h3>Contact</h3>
       <ul>
         <li>Stitched together by:
-          <a href="//plus.google.com/u/0/116483157797299917604" target="_blank">Alex Baker</a>
+          <a href="//www.linkedin.com/in/alexbakerio" target="_blank">Alex Baker</a>
         </li>
         <li>Twitter:
-          <a href="//twitter.com/alexbakertech" target="_blank">@alexbakertech</a>
+          <a href="//twitter.com/alexbakerio" target="_blank">@alexbakerio</a>
         </li>
         <li>Site:
-          <a href="//alexbakertech.com" target="_blank">alexbakertech.com</a>
+          <a href="//alexbaker.io" target="_blank">alexbaker.io</a>
         </li>
       </ul>
     </section>

@@ -4,7 +4,7 @@
 
 html {
   font-family: sans-serif;
-  -ms-text-size-adjust: 100%; 
+  -ms-text-size-adjust: 100%;
   -webkit-text-size-adjust: 100%;
 }
 
@@ -233,44 +233,39 @@ th {
 /* ==========================================================================
    Element Styles
    ========================================================================== */
-
-html { 
-  height: 100%;
-}
-
 body {
   background-color: #e0d4d4;
-  font-family: 'Roboto Slab';
-  height: 100%; 
-  margin: 0; 
+  font: 80% 'Roboto Slab';
+  margin: 0;
   padding: 0;
-  min-width: 600px;
 }
 
 section {
-  margin: 0 auto;
-  width: 510px;
+  margin: 0 auto 5em;
+  max-width: 510px;
+  width: 90%;
 }
 
 h1 {
   color: #ff6464;
-  font: 2.7em/50% 'Lobster';
+  font: 4em 'Lobster';
+  margin-bottom: 1.5em;
   text-shadow: 2px 2px #8e0e0e;
 }
 
 h3 {
   color: #ff6464;
-  font: 2em/0 'Lobster';
+  font: 2em 'Lobster';
 }
 
 p {
   margin: 15px auto;
-  width: 510px;
 }
 
 input {
   border: 1px solid grey;
   border-radius: 10px;
+  margin: .5em 1em 0 0;
   padding-left: 6px;
   outline: none;
 }
@@ -309,19 +304,20 @@ a:visited {
   text-decoration: none;
 }
 
+a:hover {
+  color: #ff6464;
+}
+
 
 /* ==========================================================================
    Custom Styles
    ========================================================================== */
-
 .mapWrapper {
   position: relative;
 }
 
 #map {
-  height: 310px;
-  margin: auto;
-  width: 510px;
+  height: 200px;
 }
 
 #templates {
@@ -458,12 +454,26 @@ a:visited {
 
 
 /* ==========================================================================
+   Media queries
+   ========================================================================== */
+@media all and (min-width: 500px) {
+  body {
+    font-size: 100%;
+  }
+
+  #map {
+    height: 310px;
+  }
+}
+
+
+/* ==========================================================================
    Helper classes
    ========================================================================== */
 
 *, *:before, *:after {
-  -moz-box-sizing: border-box; 
-  -webkit-box-sizing: border-box; 
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
   box-sizing: border-box;
  }
 
