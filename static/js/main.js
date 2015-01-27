@@ -23,13 +23,13 @@ function makeMap(coords) {
     center: new google.maps.LatLng(35, 0),
     zoom: 1
   };
-  $.getJSON('/js/mapstyle.json', function (data) {
+  $.getJSON('static/js/mapstyle.json', function (data) {
     mapStyles = data;
     styledMap = new google.maps.StyledMapType(mapStyles, {name: 'Styled Map'});
     map = new google.maps.Map(document.getElementById('map'), mapOptions);
     map.mapTypes.set('map_style', styledMap);
     map.setMapTypeId('map_style');
-    
+
     // add markers to map
     for (var i = 0; i < coords.length; i++) {
       myLatlng = new google.maps.LatLng(coords[i][0][0], coords[i][0][1]);
@@ -80,7 +80,7 @@ function findLoc(tweet) {
             q: encodeURIComponent(item.user.location),
             maxRows: 1,
             fuzzy: 0.2,
-            username: 'username_here'
+            username: 'ab77'
           }
         })
           .done(function(data) {

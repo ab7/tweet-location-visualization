@@ -39,10 +39,10 @@ class Front(Handler):
     def get(self):
         if self.request.get('fmt') == 'json':
             # hacked tweepy to return raw json instead of tweepy objects
-            consumer_key = 'key_here'
-            consumer_secret = 'key_here'
-            access_token = 'key_here'
-            access_token_secret = 'key_here'
+            consumer_key = 'fhvnSBrNWX669DrIptZT7L4w9'
+            consumer_secret = 'M7z9Fk63Nwo9KG7d4iGjY4SojOLeGDbdQGknM2a7YQzHxTFi8Z'
+            access_token = '2360528766-Dz2O3M5u5DAltu9vtxJhz1P81XTwL1bjyTQMHfD'
+            access_token_secret = 'bwt3vdkEXEPAGyjZFL6QnTXHzsvqk79Xx54E7GAUMEU6H'
             auth = tweepy.OAuthHandler(consumer_key, consumer_secret)
             auth.set_access_token(access_token, access_token_secret)
             twitter = tweepy.API(auth)
